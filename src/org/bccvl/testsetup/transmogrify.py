@@ -297,8 +297,8 @@ class FutureClimateLayer250m(FutureClimateLayer5k):
     resolution = 'Resolution9s'
     swiftcontainer = 'australia_250m'
     folder = 'australia/australia_250m'
-    titletempl = "Australia, Climate Projection {0} based on {1}, 9 arcsec (~250m) - {2}"
-    current_title = "Australia, current climate (1976-2005), 9 arcsec"
+    titletempl = "Australia, Climate Projection {0} based on {1}, 9 arcsec (~250 m) - {2}"
+    current_title = "Australia, current climate (1976-2005), 9 arcsec (~250 m)"
     current_file = None
 
 
@@ -670,7 +670,7 @@ class NDLCLayers(object):
 
         for filename, title in (
                 ('ndlc_DLCDv1_Class.zip',
-                 'Australia, Dynamic Land Cover, (2000-2008), 9 arcsec (~250 m)'),
+                 'Australia, Dynamic Land Cover (2000-2008), 9 arcsec (~250 m)'),
                 ('ndlc_trend_evi_min.zip',
                  'Trend in the annual minimum of the Enhanced Vegetation Index'),
                 ('ndlc_trend_evi_mean.zip',
