@@ -1079,12 +1079,12 @@ class FPARLayers(object):
             elif len(dfile) == 29:
                 year1 = dfile.split(".")[1].split("-")[0]
                 year2 = dfile.split(".")[1].split("-")[1]
-                item['title'] = 'Australia, MODIS-fPAR time series - {year1}-{year2} Growing Year (Average, Minimum, Maximum)'.format(year1=year1, year2=year2)
+                item['title'] = 'Australia, MODIS-fPAR time series - ({year1}-{year2}) Growing Year (Average, Minimum, Maximum)'.format(year1=year1, year2=year2)
                 item['description'] = "Data aggregated for {year1}-{year2} Growing Year (Annual Average, Minimum, Maximum)".format(year1=year1, year2=year2)
             # Calendar year (Jan - Dec)
             elif len(dfile) == 24:
                 year = dfile.split(".")[1]
-                item['title'] = 'Australia, MODIS-fPAR time series - {year} Calendar Year (Average, Minimum, Maximum)'.format(year=year)
+                item['title'] = 'Australia, MODIS-fPAR time series - ({year}) Calendar Year (Average, Minimum, Maximum)'.format(year=year)
                 item['description'] = "Data aggregated for {year} Calendar Year (Annual Average, Minimum, Maximum)".format(year=year)
             # Long-term monthly
             elif len(dfile) == 22:
@@ -1171,7 +1171,7 @@ class ACCUClimLayers(WorldClimLayer):
             '_path': 'datasets/climate/accuclim/{}/{}'.format(res, filename),
             '_owner': (1, 'admin'),
             "_type": "org.bccvl.content.remotedataset",
-            "title": u'accuCLIM (Wet Tropics Australia), 30-year average either side of {year}, 9 arcsec (~250 m)'.format(year=year),
+            "title": u'accuCLIM (Wet Tropics Australia), 30-year average either side of ({year}), 9 arcsec (~250 m)'.format(year=year),
             "description": u"A set of 7 bioclimatic variables, calculated according to the WorldClim method.  They are coded as follows: accuCLIM_01 = Annual Mean Temperature, accuCLIM_02 = Mean Diurnal Range, accuCLIM_03 = Isothermality (accuCLIM_02/accuCLIM_07), accuCLIM_04 = Temperature Seasonality, accuCLIM_05 = Max Temperature of Warmest Month, accuCLIM_06 = Min Temperature of Coldest Month, accuCLIM_07 = Temperature Annual Range (accuCLIM_05-accuCLIM_06).",
             "remoteUrl": '{0}/accuclim/{1}'.format(SWIFTROOT, filename),
             "format": "application/zip",
@@ -1236,7 +1236,7 @@ class TASClimLayers(WorldClimLayer):
             '_path': 'datasets/climate/tasclim/{}/{}'.format(res, filename),
             '_owner': (1, 'admin'),
             "_type": "org.bccvl.content.remotedataset",
-            "title": u'Tasmania, climate futures Tasmania, (1980-2085),  (CFT) ({emsc}) based on {gcm}, 6 arcmin (~12 km) ({year})'.format(
+            "title": u'Tasmania, climate futures Tasmania, ({year}),  (CFT) ({emsc}) based on {gcm}, 6 arcmin (~12 km)'.format(
                 emsc=emsc_title(self.context, emsc.upper()), gcm=gcm.upper(), year=year),
             "description": u"Climate Futures Tasmania (CFT) Bioclimate Map Time-Series, 1980-2085. A set of 19 bioclimatic variables (30-year average) with 6 arcminute resolution, calculated according to the WorldClim method.",
             "remoteUrl": '{0}/tasclim/{1}'.format(SWIFTROOT, filename),
@@ -1255,7 +1255,7 @@ class TASClimLayers(WorldClimLayer):
 
         # Set category to current for year <= 2015
         if  year <= 2015:
-            item["title"] = u'Tasmania, Current Climate ({emsc}) based on {gcm}, 6 arcmin (~12 km) ({year})'.format(
+            item["title"] = u'Tasmania, Current Climate ({year}), ({emsc}) based on {gcm}, 6 arcmin (~12 km)'.format(
                 emsc=emsc_title(self.context, emsc.upper()), gcm=gcm.upper(), year=year)
             item["bccvlmetadata"] = {
                 "genre": "DataGenreCC",
@@ -1319,7 +1319,7 @@ class ClimondLayers(WorldClimLayer):
             '_path': 'datasets/climate/climond/{}/{}'.format(res, filename),
             '_owner': (1, 'admin'),
             "_type": "org.bccvl.content.remotedataset",
-            "title": u'CliMond (global), current climate, (1975), ({emsc}) based on {gcm}, 10 arcmin (~20 km) ({year})'.format(
+            "title": u'CliMond (global), current climate, ({year}), ({emsc}) based on {gcm}, 10 arcmin (~20 km)'.format(
                 emsc=emsc_title(self.context, emsc.upper()), gcm=gcm.upper(), year=year),
             "description": u"CLIMOND Bioclimate Map Time-Series, 1975 - 2100.  A set of 35 bioclimatic variables (30-year average) with 10 arcminute resolution, calculated according to the WorldClim method.",
             "remoteUrl": '{0}/climond/{1}'.format(SWIFTROOT, filename),
@@ -1418,15 +1418,15 @@ class NarclimLayers(WorldClimLayer):
 
     def _createItem(self, gcm, rcm, res, year):
         if res == '36s':
-            resolution = '36 arcsec'
+            resolution = '36 arcsec (~1 km)'
         else:
-            resolution = '9 arcsec'
+            resolution = '9 arcsec (~250 m)'
         filename = 'NaRCLIM_{gcm}_{rcm}_{year}.zip'.format(gcm=gcm, rcm=rcm, year=year)
         item = {
             '_path': 'datasets/climate/narclim/{}/{}'.format(res, filename),
             '_owner': (1, 'admin'),
             "_type": "org.bccvl.content.remotedataset",
-            "title": u'South-East Australia Future Climate (SRES-A2) based on {gcm}-{rcm}, {resolution} ({year})'.format(gcm=gcm.upper(), rcm=rcm.upper(), resolution=resolution, year=year),
+            "title": u'South-East Australia Future Climate, ({year}), (SRES-A2) based on {gcm}-{rcm}, {resolution}'.format(gcm=gcm.upper(), rcm=rcm.upper(), resolution=resolution, year=year),
             "description": u"South-East Australia Bioclimate Maps: year {year}. A set of 35 bioclimatic variables (20-year average) for NSW, VIC & ACT with {resolution} resolution, calculated according to the WorldClim method.".format(year=year, resolution=resolution),
             "remoteUrl": '{0}/narclim/{1}/{2}'.format(SWIFTROOT, res, filename),
             "format": "application/zip",
@@ -1448,14 +1448,14 @@ class NarclimLayers(WorldClimLayer):
 
     def _createCurrentItem(self, filename, res, year):
         if res == '36s':
-            resolution = '36 arcsec'
+            resolution = '36 arcsec (~1 km)'
         else:
-            resolution = '9 arcsec'
+            resolution = '9 arcsec (~250 m)'
         item = {
             '_path': 'datasets/climate/narclim/{}/{}'.format(res, filename),
             '_owner': (1, 'admin'),
             "_type": "org.bccvl.content.remotedataset",
-            "title": u'South-East Australia Current Climate, {resolution} ({year})'.format(resolution=resolution, year=year),
+            "title": u'South-East Australia Current Climate, ({year}), {resolution}'.format(resolution=resolution, year=year),
             "description": u"South-East Australia Bioclimate Maps: year {year}. A set of 35 bioclimatic variables (20-year average) for NSW, VIC & ACT with {resolution} resolution, calculated according to the WorldClim method.".format(year=year, resolution=resolution),
             "remoteUrl": '{0}/narclim/{1}/{2}'.format(SWIFTROOT, res, filename),
             "format": "application/zip",
